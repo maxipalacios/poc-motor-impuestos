@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "ee5bc70e-bd58-44e7-b42d-590f95a0d82d",
+		"name": "PoC Motor Impuestos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24472513"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los rangos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/certificates/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"certificates",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
