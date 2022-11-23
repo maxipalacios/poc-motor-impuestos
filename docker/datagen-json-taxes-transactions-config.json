@@ -1,0 +1,18 @@
+{
+    "config": {
+        "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
+        "iterations": "1000",
+        "kafka.topic": "transactions",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "max.interval": "1000",
+        "name": "datagen-transactions-json",
+        "schema.keyfield": "external_id",
+        "schema.string":"{\"type\":\"record\",\"name\":\"transactions\",\"fields\":[{\"name\":\"external_id\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"iteration\":{\"start\":1}}}},{\"name\":\"cuit\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"30692343502\",\"30710551843\",\"20149543350\",\"20149543350\",\"20042676536\"]}}},{\"name\":\"buyer_jurisdiction\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"options\":[907,922,904]}}},{\"name\":\"amount\",\"type\":{\"type\":\"double\",\"arg.properties\":{\"range\":{\"min\":50.0,\"max\":500.0}}}}]}",
+        "tasks.max": "1",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false"
+    },
+    "name": "datagen-taxes-transactions-json",
+    "tasks": [],
+    "type": "source"
+}

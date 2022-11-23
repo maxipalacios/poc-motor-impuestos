@@ -1,0 +1,1411 @@
+{
+	"info": {
+		"_postman_id": "53c1df3b-ca59-4828-831c-8d24b3fc0dc9",
+		"name": "Kafka Connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24472513"
+	},
+	"item": [
+		{
+			"name": "connect cluster",
+			"item": [
+				{
+					"name": "Connect cluster information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Connect cluster information",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:24:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"version\": \"7.3.0-ccs\",\n    \"commit\": \"b8341813ae2b0444690121942f62c3a125fbf4b3\",\n    \"kafka_cluster_id\": \"wl7U-SgIQTGsTDy3-mWlHw\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "connectors",
+			"item": [
+				{
+					"name": "Get a list of active connectors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a list of active connectors with expanded status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/connectors?expand=status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"connectors"
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "status"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 13 Jun 2022 03:06:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1164"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.44.v20210927)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"datagen-transactions-json\": {\n        \"status\": {\n            \"name\": \"datagen-transactions-json\",\n            \"connector\": {\n                \"state\": \"RUNNING\",\n                \"worker_id\": \"connect:8083\"\n            },\n            \"tasks\": [\n                {\n                    \"id\": 0,\n                    \"state\": \"FAILED\",\n                    \"worker_id\": \"connect:8083\",\n                    \"trace\": \"org.apache.kafka.connect.errors.ConnectException: Stopping connector: generated the configured 1000 number of messages\\n\\tat io.confluent.kafka.connect.datagen.DatagenTask.poll(DatagenTask.java:207)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.poll(WorkerSourceTask.java:304)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.execute(WorkerSourceTask.java:248)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:243)\\n\\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\\n\\tat java.base/java.lang.Thread.run(Thread.java:829)\\n\"\n                }\n            ],\n            \"type\": \"source\"\n        }\n    }\n}"
+						},
+						{
+							"name": "Get a list of active connectors with expanded info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/connectors?expand=info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"connectors"
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "info"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 13 Jun 2022 03:07:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1132"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.44.v20210927)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"datagen-transactions-json\": {\n        \"info\": {\n            \"name\": \"datagen-transactions-json\",\n            \"config\": {\n                \"connector.class\": \"io.confluent.kafka.connect.datagen.DatagenConnector\",\n                \"schema.string\": \"{\\\"type\\\":\\\"record\\\",\\\"name\\\":\\\"transactions\\\",\\\"fields\\\":[{\\\"name\\\":\\\"external_id\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"iteration\\\":{\\\"start\\\":1}}}},{\\\"name\\\":\\\"cuit\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"30692343502\\\",\\\"30710551843\\\",\\\"20149543350\\\",\\\"20149543350\\\",\\\"20042676536\\\"]}}},{\\\"name\\\":\\\"buyer_jurisdiction\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"options\\\":[907,922,904]}}},{\\\"name\\\":\\\"amount\\\",\\\"type\\\":{\\\"type\\\":\\\"double\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":50.0,\\\"max\\\":500.0}}}}]}\",\n                \"tasks.max\": \"1\",\n                \"name\": \"datagen-transactions-json\",\n                \"value.converter.schemas.enable\": \"false\",\n                \"kafka.topic\": \"transactions\",\n                \"schema.keyfield\": \"external_id\",\n                \"max.interval\": \"1000\",\n                \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n                \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n                \"iterations\": \"1000\"\n            },\n            \"tasks\": [\n                {\n                    \"connector\": \"datagen-transactions-json\",\n                    \"task\": 0\n                }\n            ],\n            \"type\": \"source\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a new connector",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"config\": {\r\n        \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n        \"key.converter.schemas.enable\": \"false\",\r\n        \"database\": \"TaxesDocuments\",\r\n        \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\r\n        \"topics\": \"certificates\",\r\n        \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n        \"value.converter.schemas.enable\": \"false\",\r\n        \"name\": \"mongo-motorimpuestos-sink\",\r\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n        \"collection\": \"certificates\",\r\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/connectors",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "datagen trasactions",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"datagen-transactions-json\",\r\n    \"config\": {\r\n        \"connector.class\": \"io.confluent.kafka.connect.datagen.DatagenConnector\",\r\n        \"iterations\": \"1000\",\r\n        \"kafka.topic\": \"transactions\",\r\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\r\n        \"max.interval\": \"1000\",\r\n        \"name\": \"datagen-transactions-json\",\r\n        \"schema.keyfield\": \"external_id\",\r\n        \"schema.string\": \"{\\\"type\\\":\\\"record\\\",\\\"name\\\":\\\"transactions\\\",\\\"fields\\\":[{\\\"name\\\":\\\"external_id\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"iteration\\\":{\\\"start\\\":1}}}},{\\\"name\\\":\\\"cuit\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"30692343502\\\",\\\"30710551843\\\",\\\"20149543350\\\",\\\"20149543350\\\",\\\"20042676536\\\"]}}},{\\\"name\\\":\\\"buyer_jurisdiction\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"options\\\":[907,922,904]}}},{\\\"name\\\":\\\"amount\\\",\\\"type\\\":{\\\"type\\\":\\\"double\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":50.0,\\\"max\\\":500.0}}}}]}\",\r\n        \"tasks.max\": \"1\",\r\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n        \"value.converter.schemas.enable\": \"false\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/connectors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"connectors"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "mongo-motorimpuestos-sink",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"config\": {\r\n        \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n        \"key.converter.schemas.enable\": \"false\",\r\n        \"database\": \"TaxesDocuments\",\r\n        \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\r\n        \"topics\": \"certificates\",\r\n        \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n        \"value.converter.schemas.enable\": \"false\",\r\n        \"name\": \"mongo-motorimpuestos-sink\",\r\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n        \"collection\": \"certificates\",\r\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{hostname}}/connectors",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 02:14:31 GMT"
+								},
+								{
+									"key": "Location",
+									"value": "http://192.168.0.100:8083/connectors/mongo-motorimpuestos-sink"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "619"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"mongo-motorimpuestos-sink\",\n    \"config\": {\n        \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n        \"key.converter.schemas.enable\": \"false\",\n        \"database\": \"TaxesDocuments\",\n        \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\n        \"topics\": \"certificates\",\n        \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\n        \"value.converter.schemas.enable\": \"false\",\n        \"name\": \"mongo-motorimpuestos-sink\",\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n        \"collection\": \"certificates\",\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\n    },\n    \"tasks\": [],\n    \"type\": \"sink\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get information about the connector",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get information about the connector",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:06:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "669"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"mongo-motorimpuestos-sink\",\n    \"config\": {\n        \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n        \"key.converter.schemas.enable\": \"false\",\n        \"database\": \"TaxesDocuments\",\n        \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\n        \"topics\": \"certificates\",\n        \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\n        \"value.converter.schemas.enable\": \"false\",\n        \"name\": \"mongo-motorimpuestos-sink\",\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n        \"collection\": \"certificates\",\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\n    },\n    \"tasks\": [\n        {\n            \"connector\": \"mongo-motorimpuestos-sink\",\n            \"task\": 0\n        }\n    ],\n    \"type\": \"sink\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get the configuration for the connector",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/config",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"config"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get the configuration for the connector",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/config",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"config"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:17:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "548"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n    \"key.converter.schemas.enable\": \"false\",\n    \"database\": \"TaxesDocuments\",\n    \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\n    \"topics\": \"certificates\",\n    \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\n    \"value.converter.schemas.enable\": \"false\",\n    \"name\": \"mongo-motorimpuestos-sink\",\n    \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n    \"collection\": \"certificates\",\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create or update a connector",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n    \"key.converter.schemas.enable\": \"false\",\r\n    \"database\": \"TaxesDocuments\",\r\n    \"topics\": \"certificates\",\r\n    \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n    \"value.converter.schemas.enable\": \"false\",\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n    \"collection\": \"certificates\",\r\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\r\n    \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/config",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"config"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create or update a connector",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n    \"key.converter.schemas.enable\": \"false\",\r\n    \"database\": \"TaxesDocuments\",\r\n    \"topics\": \"certificates\",\r\n    \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n    \"value.converter.schemas.enable\": \"false\",\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n    \"collection\": \"certificates\",\r\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\r\n    \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/config",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"config"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:10:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "669"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"mongo-motorimpuestos-sink\",\n    \"config\": {\n        \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n        \"key.converter.schemas.enable\": \"false\",\n        \"database\": \"TaxesDocuments\",\n        \"topics\": \"certificates\",\n        \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\n        \"value.converter.schemas.enable\": \"false\",\n        \"name\": \"mongo-motorimpuestos-sink\",\n        \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n        \"collection\": \"certificates\",\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n        \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\"\n    },\n    \"tasks\": [\n        {\n            \"connector\": \"mongo-motorimpuestos-sink\",\n            \"task\": 0\n        }\n    ],\n    \"type\": \"sink\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Gets the current status of the connector",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/status",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Gets the current status of the connector",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/status",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:07:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "173"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"mongo-motorimpuestos-sink\",\n    \"connector\": {\n        \"state\": \"RUNNING\",\n        \"worker_id\": \"connect:8083\"\n    },\n    \"tasks\": [\n        {\n            \"id\": 0,\n            \"state\": \"RUNNING\",\n            \"worker_id\": \"connect:8083\"\n        }\n    ],\n    \"type\": \"sink\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Restart the connector",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/restart",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"restart"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Restart the connector including tasks",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/connectors/datagen-transactions-json/restart?includeTasks=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"connectors",
+										"datagen-transactions-json",
+										"restart"
+									],
+									"query": [
+										{
+											"key": "includeTasks",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 13 Jun 2022 03:39:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1130"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.44.v20210927)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"datagen-transactions-json\",\n    \"connector\": {\n        \"state\": \"RESTARTING\",\n        \"worker_id\": \"connect:8083\"\n    },\n    \"tasks\": [\n        {\n            \"id\": 0,\n            \"state\": \"RESTARTING\",\n            \"worker_id\": \"connect:8083\",\n            \"trace\": \"org.apache.kafka.connect.errors.ConnectException: Stopping connector: generated the configured 1500 number of messages\\n\\tat io.confluent.kafka.connect.datagen.DatagenTask.poll(DatagenTask.java:207)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.poll(WorkerSourceTask.java:304)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.execute(WorkerSourceTask.java:248)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:243)\\n\\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\\n\\tat java.base/java.lang.Thread.run(Thread.java:829)\\n\"\n        }\n    ],\n    \"type\": \"source\"\n}"
+						},
+						{
+							"name": "Restart the connector only failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/connectors/datagen-transactions-json/restart?onlyFailed=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"connectors",
+										"datagen-transactions-json",
+										"restart"
+									],
+									"query": [
+										{
+											"key": "onlyFailed",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 13 Jun 2022 03:41:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1123"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.44.v20210927)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"datagen-transactions-json\",\n    \"connector\": {\n        \"state\": \"RUNNING\",\n        \"worker_id\": \"connect:8083\"\n    },\n    \"tasks\": [\n        {\n            \"id\": 0,\n            \"state\": \"FAILED\",\n            \"worker_id\": \"connect:8083\",\n            \"trace\": \"org.apache.kafka.connect.errors.ConnectException: Stopping connector: generated the configured 1500 number of messages\\n\\tat io.confluent.kafka.connect.datagen.DatagenTask.poll(DatagenTask.java:207)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.poll(WorkerSourceTask.java:304)\\n\\tat org.apache.kafka.connect.runtime.WorkerSourceTask.execute(WorkerSourceTask.java:248)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)\\n\\tat org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:243)\\n\\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\\n\\tat java.base/java.lang.Thread.run(Thread.java:829)\\n\"\n        }\n    ],\n    \"type\": \"source\"\n}"
+						},
+						{
+							"name": "Restart the connector",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/restart",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"restart"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:09:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Pause the connector and its tasks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/pause",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"pause"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Pause the connector and its tasks",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/pause",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"pause"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:19:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Resume a paused connector",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/resume",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"resume"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Resume a paused connector",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/resume",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"resume"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:20:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete a connector",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "Get a list of tasks currently running for the connector",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/tasks",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"tasks"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a list of tasks currently running for the connector",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/tasks",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:14:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "677"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": {\n            \"connector\": \"mongo-motorimpuestos-sink\",\n            \"task\": 0\n        },\n        \"config\": {\n            \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n            \"key.converter.schemas.enable\": \"false\",\n            \"database\": \"TaxesDocuments\",\n            \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\n            \"task.class\": \"com.mongodb.kafka.connect.sink.MongoSinkTask\",\n            \"topics\": \"certificates\",\n            \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\n            \"value.converter.schemas.enable\": \"false\",\n            \"name\": \"mongo-motorimpuestos-sink\",\n            \"collection\": \"certificates\",\n            \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\n            \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a task’s status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/tasks/:task_id/status",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"tasks",
+								":task_id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								},
+								{
+									"key": "task_id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a task’s status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/tasks/0/status",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"tasks",
+										"0",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:15:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 0,\n    \"state\": \"RUNNING\",\n    \"worker_id\": \"connect:8083\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Restart an individual task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/tasks/:task_id/restart",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"tasks",
+								":task_id",
+								"restart"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								},
+								{
+									"key": "task_id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Restart an individual task",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/tasks/0/restart",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"tasks",
+										"0",
+										"restart"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:16:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "topics",
+			"item": [
+				{
+					"name": "Returns a list of connector topic names",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/topics",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"topics"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Returns a list of connector topic names",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connectors/mongo-motorimpuestos-sink/topics",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connectors",
+										"mongo-motorimpuestos-sink",
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:21:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mongo-motorimpuestos-sink\": {\n        \"topics\": [\n            \"certificates\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Resets the set of topic names",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connectors/:name/topics/reset",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connectors",
+								":name",
+								"topics",
+								"reset"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "mongo-motorimpuestos-sink"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "connector plugins",
+			"item": [
+				{
+					"name": "Return a list of connector plugins installed in the Kafka Connect cluster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/connector-plugins",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connector-plugins"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Return a list of connector plugins installed in the Kafka Connect cluster",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{hostname}}/connector-plugins",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connector-plugins"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:23:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "502"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n        \"type\": \"sink\",\n        \"version\": \"1.8.0\"\n    },\n    {\n        \"class\": \"com.mongodb.kafka.connect.MongoSourceConnector\",\n        \"type\": \"source\",\n        \"version\": \"1.8.0\"\n    },\n    {\n        \"class\": \"org.apache.kafka.connect.mirror.MirrorCheckpointConnector\",\n        \"type\": \"source\",\n        \"version\": \"7.3.0-ccs\"\n    },\n    {\n        \"class\": \"org.apache.kafka.connect.mirror.MirrorHeartbeatConnector\",\n        \"type\": \"source\",\n        \"version\": \"7.3.0-ccs\"\n    },\n    {\n        \"class\": \"org.apache.kafka.connect.mirror.MirrorSourceConnector\",\n        \"type\": \"source\",\n        \"version\": \"7.3.0-ccs\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Validate the provided configuration values against the configuration definition",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n    \"key.converter.schemas.enable\": \"false\",\r\n    \"database\": \"TaxesDocuments\",\r\n    \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\r\n    \"topics\": \"certificates\",\r\n    \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n    \"value.converter.schemas.enable\": \"false\",\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n    \"collection\": \"certificates\",\r\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/connector-plugins/:name/config/validate",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"connector-plugins",
+								":name",
+								"config",
+								"validate"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "MongoSinkConnector"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Validate the provided configuration values against the configuration definition",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"connector.class\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\r\n    \"key.converter.schemas.enable\": \"false\",\r\n    \"database\": \"TaxesDocuments\",\r\n    \"document.id.strategy\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\r\n    \"topics\": \"certificates\",\r\n    \"connection.uri\": \"mongodb://root:example@192.168.0.100:27017\",\r\n    \"value.converter.schemas.enable\": \"false\",\r\n    \"name\": \"mongo-motorimpuestos-sink\",\r\n    \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n    \"collection\": \"certificates\",\r\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{hostname}}/connector-plugins/MongoSinkConnector/config/validate",
+									"protocol": "http",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"connector-plugins",
+										"MongoSinkConnector",
+										"config",
+										"validate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 22 Nov 2022 21:58:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.4.48.v20220622)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n    \"error_count\": 0,\n    \"groups\": [\n        \"Common\",\n        \"Transforms\",\n        \"Predicates\",\n        \"Error Handling\",\n        \"Connection\",\n        \"Server Api\",\n        \"Overrides\",\n        \"\",\n        \"Namespace\",\n        \"Namespace mapping\",\n        \"Writes\",\n        \"Post Processing\",\n        \"Id Strategies\",\n        \"Errors\",\n        \"Change Data Capture\",\n        \"Time series\"\n    ],\n    \"configs\": [\n        {\n            \"definition\": {\n                \"name\": \"name\",\n                \"type\": \"STRING\",\n                \"required\": true,\n                \"default_value\": null,\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Globally unique name to use for this connector.\",\n                \"group\": \"Common\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Connector name\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"name\",\n                \"value\": \"mongo-motorimpuestos-sink\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"connector.class\",\n                \"type\": \"STRING\",\n                \"required\": true,\n                \"default_value\": null,\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Name or alias of the class for this connector. Must be a subclass of org.apache.kafka.connect.connector.Connector. If the connector is org.apache.kafka.connect.file.FileStreamSinkConnector, you can either specify this full name,  or use \\\"FileStreamSink\\\" or \\\"FileStreamSinkConnector\\\" to make the configuration a bit shorter\",\n                \"group\": \"Common\",\n                \"width\": \"LONG\",\n                \"display_name\": \"Connector class\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"connector.class\",\n                \"value\": \"com.mongodb.kafka.connect.MongoSinkConnector\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"tasks.max\",\n                \"type\": \"INT\",\n                \"required\": false,\n                \"default_value\": \"1\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Maximum number of tasks to use for this connector.\",\n                \"group\": \"Common\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Tasks max\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"tasks.max\",\n                \"value\": \"1\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"key.converter\",\n                \"type\": \"CLASS\",\n                \"required\": false,\n                \"default_value\": null,\n                \"importance\": \"LOW\",\n                \"documentation\": \"Converter class used to convert between Kafka Connect format and the serialized form that is written to Kafka. This controls the format of the keys in messages written to or read from Kafka, and since this is independent of connectors it allows any connector to work with any serialization format. Examples of common formats include JSON and Avro.\",\n                \"group\": \"Common\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Key converter class\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"key.converter\",\n                \"value\": \"org.apache.kafka.connect.storage.StringConverter\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"value.converter\",\n                \"type\": \"CLASS\",\n                \"required\": false,\n                \"default_value\": null,\n                \"importance\": \"LOW\",\n                \"documentation\": \"Converter class used to convert between Kafka Connect format and the serialized form that is written to Kafka. This controls the format of the values in messages written to or read from Kafka, and since this is independent of connectors it allows any connector to work with any serialization format. Examples of common formats include JSON and Avro.\",\n                \"group\": \"Common\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Value converter class\",\n                \"dependents\": [],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"value.converter\",\n                \"value\": \"org.apache.kafka.connect.json.JsonConverter\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"header.converter\",\n                \"type\": \"CLASS\",\n                \"required\": false,\n                \"default_value\": null,\n                \"importance\": \"LOW\",\n                \"documentation\": \"HeaderConverter class used to convert between Kafka Connect format and the serialized form that is written to Kafka. This controls the format of the header values in messages written to or read from Kafka, and since this is independent of connectors it allows any connector to work with any serialization format. Examples of common formats include JSON and Avro. By default, the SimpleHeaderConverter is used to serialize header values to strings and deserialize them by inferring the schemas.\",\n                \"group\": \"Common\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Header converter class\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"header.converter\",\n                \"value\": null,\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"transforms\",\n                \"type\": \"LIST\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Aliases for the transformations to be applied to records.\",\n                \"group\": \"Transforms\",\n                \"width\": \"LONG\",\n                \"display_name\": \"Transforms\",\n                \"dependents\": [],\n                \"order\": 7\n            },\n            \"value\": {\n                \"name\": \"transforms\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"predicates\",\n                \"type\": \"LIST\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Aliases for the predicates used by transformations.\",\n                \"group\": \"Predicates\",\n                \"width\": \"LONG\",\n                \"display_name\": \"Predicates\",\n                \"dependents\": [],\n                \"order\": 8\n            },\n            \"value\": {\n                \"name\": \"predicates\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"config.action.reload\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"restart\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The action that Connect should take on the connector when changes in external configuration providers result in a change in the connector's configuration properties. A value of 'none' indicates that Connect will do nothing. A value of 'restart' indicates that Connect should restart/reload the connector with the updated configuration properties.The restart may actually be scheduled in the future if the external configuration provider indicates that a configuration value will expire in the future.\",\n                \"group\": \"Common\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Reload Action\",\n                \"dependents\": [],\n                \"order\": 9\n            },\n            \"value\": {\n                \"name\": \"config.action.reload\",\n                \"value\": \"restart\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.retry.timeout\",\n                \"type\": \"LONG\",\n                \"required\": false,\n                \"default_value\": \"0\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The maximum duration in milliseconds that a failed operation will be reattempted. The default is 0, which means no retries will be attempted. Use -1 for infinite retries.\",\n                \"group\": \"Error Handling\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Retry Timeout for Errors\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"errors.retry.timeout\",\n                \"value\": \"0\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.retry.delay.max.ms\",\n                \"type\": \"LONG\",\n                \"required\": false,\n                \"default_value\": \"60000\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The maximum duration in milliseconds between consecutive retry attempts. Jitter will be added to the delay once this limit is reached to prevent thundering herd issues.\",\n                \"group\": \"Error Handling\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Maximum Delay Between Retries for Errors\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"errors.retry.delay.max.ms\",\n                \"value\": \"60000\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.tolerance\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"none\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Behavior for tolerating errors during connector operation. 'none' is the default value and signals that any error will result in an immediate connector task failure; 'all' changes the behavior to skip over problematic records.\",\n                \"group\": \"Errors\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Error Tolerance\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"errors.tolerance\",\n                \"value\": \"none\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.log.enable\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"If true, write each error and the details of the failed operation and problematic record to the Connect application log. This is 'false' by default, so that only errors that are not tolerated are reported.\",\n                \"group\": \"Errors\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Log Errors\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"errors.log.enable\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.log.include.messages\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Whether to include in the log the Connect record that resulted in a failure.For sink records, the topic, partition, offset, and timestamp will be logged. For source records, the key and value (and their schemas), all headers, and the timestamp, Kafka topic, Kafka partition, source partition, and source offset will be logged. This is 'false' by default, which will prevent record keys, values, and headers from being written to log files.\",\n                \"group\": \"Error Handling\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Log Error Details\",\n                \"dependents\": [],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"errors.log.include.messages\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"topics\",\n                \"type\": \"LIST\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"A list of kafka topics for the sink connector, separated by commas\",\n                \"group\": \"Connection\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The Kafka topics\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"topics\",\n                \"value\": \"certificates\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"topics.regex\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Regular expression giving topics to consume. Under the hood, the regex is compiled to a <code>java.util.regex.Pattern</code>. Only one of topics or topics.regex should be specified.\",\n                \"group\": \"Connection\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Topics regex\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"topics.regex\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.deadletterqueue.topic.name\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The name of the topic to be used as the dead letter queue (DLQ) for messages that result in an error when processed by this sink connector, or its transformations or converters. The topic name is blank by default, which means that no messages are to be recorded in the DLQ.\",\n                \"group\": \"Error Handling\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Dead Letter Queue Topic Name\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"errors.deadletterqueue.topic.name\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.deadletterqueue.topic.replication.factor\",\n                \"type\": \"SHORT\",\n                \"required\": false,\n                \"default_value\": \"3\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Replication factor used to create the dead letter queue topic when it doesn't already exist.\",\n                \"group\": \"Error Handling\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Dead Letter Queue Topic Replication Factor\",\n                \"dependents\": [],\n                \"order\": 7\n            },\n            \"value\": {\n                \"name\": \"errors.deadletterqueue.topic.replication.factor\",\n                \"value\": \"3\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"errors.deadletterqueue.context.headers.enable\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"If true, add headers containing error context to the messages written to the dead letter queue. To avoid clashing with headers from the original record, all error context header keys, all error context header keys will start with <code>__connect.errors.</code>\",\n                \"group\": \"Error Handling\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Enable Error Context Headers\",\n                \"dependents\": [],\n                \"order\": 8\n            },\n            \"value\": {\n                \"name\": \"errors.deadletterqueue.context.headers.enable\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"connection.uri\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"mongodb://localhost:27017\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"The connection URI as supported by the official drivers. eg: ``mongodb://user@pass@locahost/``.\",\n                \"group\": \"Connection\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"MongoDB Connection URI\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"connection.uri\",\n                \"value\": \"mongodb://root:example@192.168.0.100:27017\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"server.api.version\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The server API version to use. Disabled by default.\",\n                \"group\": \"Server Api\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The server API version.\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"server.api.version\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"server.api.deprecation.errors\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Sets whether the connector requires use of deprecated server APIs to be reported as errors.\",\n                \"group\": \"Server Api\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Deprecation errors\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"server.api.deprecation.errors\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"server.api.strict\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Sets whether the application requires strict server API version enforcement.\",\n                \"group\": \"Server Api\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Strict\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"server.api.strict\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"topic.override.%s.%s\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The overrides configuration allows for per topic customization of configuration. The customized overrides are merged with the default configuration, to create the specific configuration for a topic.\\nFor example, ``topic.override.foo.collection=bar`` will store data from the ``foo`` topic into the ``bar`` collection.\\nNote: All configuration options apart from 'connection.uri' and 'topics' are overridable.\",\n                \"group\": \"Overrides\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Per topic configuration overrides.\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"topic.override.%s.%s\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": false\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"provider\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"\",\n                \"group\": \"\",\n                \"width\": \"NONE\",\n                \"display_name\": \"provider\",\n                \"dependents\": [],\n                \"order\": -1\n            },\n            \"value\": {\n                \"name\": \"provider\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"database\",\n                \"type\": \"STRING\",\n                \"required\": true,\n                \"default_value\": null,\n                \"importance\": \"HIGH\",\n                \"documentation\": \"The database for the sink to write.\",\n                \"group\": \"Namespace\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The MongoDB database name.\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"database\",\n                \"value\": \"TaxesDocuments\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"collection\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Optional, single sink collection name to write to. If following multiple topics then this will be the default collection they are mapped to.\",\n                \"group\": \"Namespace\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The default MongoDB collection name\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"collection\",\n                \"value\": \"certificates\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"com.mongodb.kafka.connect.sink.namespace.mapping.DefaultNamespaceMapper\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"The class that determines the namespace to write the sink data to. By default this will be based on the 'database' configuration and either the topic name or the 'collection' configuration. Users can provide their own implementations of the 'NamespaceMapper' interface.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"LONG\",\n                \"display_name\": \"The namespace mapper class\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper\",\n                \"value\": \"com.mongodb.kafka.connect.sink.namespace.mapping.DefaultNamespaceMapper\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper.key.database.field\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The key field to use as the destination database name. Requires the 'namespace.mapper' to be set to 'com.mongodb.kafka.connect.sink.topic.mapping.FieldPathNamespaceMapper'.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The key field to use as the destination database name.\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper.key.database.field\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper.key.collection.field\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The key field to use as the destination collection name. Requires the 'namespace.mapper' to be set to 'com.mongodb.kafka.connect.sink.topic.mapping.FieldPathNamespaceMapper'.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The key field to use as the destination collection name.\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper.key.collection.field\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper.value.database.field\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The value field to use as the destination database name. Requires the 'namespace.mapper' to be set to 'com.mongodb.kafka.connect.sink.topic.mapping.FieldPathNamespaceMapper'.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The value field to use as the destination database name.\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper.value.database.field\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper.value.collection.field\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The value field to use as the destination collection name. Requires the 'namespace.mapper' to be set to 'com.mongodb.kafka.connect.sink.topic.mapping.FieldPathNamespaceMapper'.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The value field to use as the destination collection name.\",\n                \"dependents\": [],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper.value.collection.field\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"namespace.mapper.error.if.invalid\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Throw an error if the mapped field is missing or invalid. Defaults to false. Requires the 'namespace.mapper' to be set to 'com.mongodb.kafka.connect.sink.topic.mapping.FieldPathNamespaceMapper'.\",\n                \"group\": \"Namespace mapping\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Throw an error if the mapped field is missing or invalid.\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"namespace.mapper.error.if.invalid\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"delete.on.null.values\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Whether or not the connector tries to delete documents based on key when value is null\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Delete on null values\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"delete.on.null.values\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"writemodel.strategy\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"com.mongodb.kafka.connect.sink.writemodel.strategy.DefaultWriteModelStrategy\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The class the handles how build the write models for the sink documents\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The writeModel strategy\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"writemodel.strategy\",\n                \"value\": \"com.mongodb.kafka.connect.sink.writemodel.strategy.DefaultWriteModelStrategy\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"max.batch.size\",\n                \"type\": \"INT\",\n                \"required\": false,\n                \"default_value\": \"0\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"The maximum number of sink records to possibly batch together for processing\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The maximum batch size\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"max.batch.size\",\n                \"value\": \"0\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"bulk.write.ordered\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"true\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Whether the batches controlled by 'max.batch.size' must be written via ordered bulk writes\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Use ordered bulk writes\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"bulk.write.ordered\",\n                \"value\": \"true\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"rate.limiting.timeout\",\n                \"type\": \"INT\",\n                \"required\": false,\n                \"default_value\": \"0\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"How long in ms processing should wait before continue processing\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The rate limiting timeout\",\n                \"dependents\": [],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"rate.limiting.timeout\",\n                \"value\": \"0\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"rate.limiting.every.n\",\n                \"type\": \"INT\",\n                \"required\": false,\n                \"default_value\": \"0\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"After how many processed batches the rate limit should trigger (NO rate limiting if n=0)\",\n                \"group\": \"Writes\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The rate limiting batch number\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"rate.limiting.every.n\",\n                \"value\": \"0\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"post.processor.chain\",\n                \"type\": \"LIST\",\n                \"required\": false,\n                \"default_value\": \"com.mongodb.kafka.connect.sink.processor.DocumentIdAdder\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"A comma separated list of post processor classes to process the data before saving to MongoDB.\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The post processor chain\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"post.processor.chain\",\n                \"value\": \"com.mongodb.kafka.connect.sink.processor.DocumentIdAdder\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"key.projection.type\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"none\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The type of key projection to use Use either `AllowList` or `BlockList`.\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The key projection type\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"key.projection.type\",\n                \"value\": \"none\",\n                \"recommended_values\": [\n                    \"none\",\n                    \"blacklist\",\n                    \"whitelist\",\n                    \"allowlist\",\n                    \"blocklist\"\n                ],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"key.projection.list\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"A comma separated list of field names for key projection\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The key projection list\",\n                \"dependents\": [\n                    \"key.projection.type\"\n                ],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"key.projection.list\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"value.projection.type\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"none\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The type of value projection to use\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The type of value projection to use Use either `AllowList` or `BlockList`.\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"value.projection.type\",\n                \"value\": \"none\",\n                \"recommended_values\": [\n                    \"none\",\n                    \"blacklist\",\n                    \"whitelist\",\n                    \"allowlist\",\n                    \"blocklist\"\n                ],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"value.projection.list\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"A comma separated list of field names for value projection\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The value projection list\",\n                \"dependents\": [\n                    \"value.projection.type\"\n                ],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"value.projection.list\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"field.renamer.mapping\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"[]\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"An inline JSON array with objects describing field name mappings.\\nExample: `[{\\\"oldName\\\":\\\"key.fieldA\\\",\\\"newName\\\":\\\"field1\\\"},{\\\"oldName\\\":\\\"value.xyz\\\",\\\"newName\\\":\\\"abc\\\"}]`\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The field renamer mapping\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"field.renamer.mapping\",\n                \"value\": \"[]\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"field.renamer.regexp\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"[]\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"An inline JSON array with objects describing regexp settings.\\nExample: `[{\\\"regexp\\\":\\\"^key\\\\\\\\\\\\\\\\..*my.*$\\\",\\\"pattern\\\":\\\"my\\\",\\\"replace\\\":\\\"\\\"},{\\\"regexp\\\":\\\"^value\\\\\\\\\\\\\\\\..*$\\\",\\\"pattern\\\":\\\"\\\\\\\\\\\\\\\\.\\\",\\\"replace\\\":\\\"_\\\"}]`\",\n                \"group\": \"Post Processing\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The field renamer regex\",\n                \"dependents\": [],\n                \"order\": 7\n            },\n            \"value\": {\n                \"name\": \"field.renamer.regexp\",\n                \"value\": \"[]\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.BsonOidStrategy\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"The IdStrategy class name to use for generating a unique document id (_id)\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy\",\n                \"value\": \"com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.overwrite.existing\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"Allows the document id strategy will overwrite existing `_id` values\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy overwrite existing setting\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.overwrite.existing\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.uuid.format\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"string\",\n                \"importance\": \"HIGH\",\n                \"documentation\": \"The bson output format when using the `UuidStrategy`. Either `String` or `Binary`.\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy uuid format\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.uuid.format\",\n                \"value\": \"string\",\n                \"recommended_values\": [\n                    \"string\",\n                    \"binary\"\n                ],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.partial.key.projection.type\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"For use with the `PartialKeyStrategy` allows custom key fields to be projected for the id strategy Use either `AllowList` or `BlockList`.\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy key projection\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.partial.key.projection.type\",\n                \"value\": \"\",\n                \"recommended_values\": [\n                    \"none\",\n                    \"blacklist\",\n                    \"whitelist\",\n                    \"allowlist\",\n                    \"blocklist\"\n                ],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.partial.key.projection.list\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"For use with the `PartialKeyStrategy` allows custom key fields to be projected for the id strategy. A comma separated list of field names for key projection.\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy key projection list\",\n                \"dependents\": [\n                    \"document.id.strategy.partial.key.projection.type\"\n                ],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.partial.key.projection.list\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.partial.value.projection.type\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"For use with the `PartialValueStrategy` allows custom value fields to be projected for the id strategy. Use either `AllowList` or `BlockList`.\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy value projection\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.partial.value.projection.type\",\n                \"value\": \"\",\n                \"recommended_values\": [\n                    \"none\",\n                    \"blacklist\",\n                    \"whitelist\",\n                    \"allowlist\",\n                    \"blocklist\"\n                ],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"document.id.strategy.partial.value.projection.list\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"For use with the `PartialValueStrategy` allows custom value fields to be projected for the id strategy. A comma separated list of field names for value projection.\",\n                \"group\": \"Id Strategies\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The document id strategy value projection list\",\n                \"dependents\": [\n                    \"document.id.strategy.partial.value.projection.type\"\n                ],\n                \"order\": 7\n            },\n            \"value\": {\n                \"name\": \"document.id.strategy.partial.value.projection.list\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"mongo.errors.tolerance\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"none\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Use this property if you would like to configure the connector's error handling behavior differently from the Connect framework's.\",\n                \"group\": \"Errors\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Error Tolerance\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"mongo.errors.tolerance\",\n                \"value\": \"none\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"mongo.errors.log.enable\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"MEDIUM\",\n                \"documentation\": \"Use this property if you would like to configure the connector's error handling behavior differently from the mapping Connect framework's.\",\n                \"group\": \"Errors\",\n                \"width\": \"SHORT\",\n                \"display_name\": \"Log Errors\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"mongo.errors.log.enable\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"change.data.capture.handler\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The class name of the CDC handler to use for processing\",\n                \"group\": \"Change Data Capture\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The CDC handler\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"change.data.capture.handler\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.timefield\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Name of the top level field used for time. Note: Inserted documents must have this field, and the field must be of the BSON datetime type.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The field used for time\",\n                \"dependents\": [],\n                \"order\": 1\n            },\n            \"value\": {\n                \"name\": \"timeseries.timefield\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.metafield\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The name of the top-level field which contains metadata in each time series document. The metadata in the specified field should be data that is used to label a unique series of documents. The metadata should rarely, if ever, change. Note: This field is used to group related data and may be of any BSON type, except for array. The meta field may not be the same as the `timeField` or `_id`.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The field describing the series\",\n                \"dependents\": [],\n                \"order\": 2\n            },\n            \"value\": {\n                \"name\": \"timeseries.metafield\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.expire.after.seconds\",\n                \"type\": \"LONG\",\n                \"required\": false,\n                \"default_value\": \"0\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Determines the amount of time in seconds the data will be in MongoDB before being automatically deleted.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The data expiry time in seconds\",\n                \"dependents\": [],\n                \"order\": 3\n            },\n            \"value\": {\n                \"name\": \"timeseries.expire.after.seconds\",\n                \"value\": \"0\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.granularity\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Describes the expected interval between subsequent measurements for a time series. Possible values: \\\"seconds\\\" \\\"minutes\\\" \\\"hours\\\".\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The data expiry time\",\n                \"dependents\": [],\n                \"order\": 4\n            },\n            \"value\": {\n                \"name\": \"timeseries.granularity\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.timefield.auto.convert\",\n                \"type\": \"BOOLEAN\",\n                \"required\": false,\n                \"default_value\": \"false\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"Converts the timeseries field to a BSON datetime type. If the value is a numeric value it will use it as the milliseconds from epoch. Note any fractional parts are discarded. If the value is a String it will use `timeseries.timefield.auto.convert.date.format` configuration to parse the date.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"Convert the field to a BSON datetime type.\",\n                \"dependents\": [],\n                \"order\": 5\n            },\n            \"value\": {\n                \"name\": \"timeseries.timefield.auto.convert\",\n                \"value\": \"false\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.timefield.auto.convert.date.format\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"yyyy-MM-dd[['T'][ ]][HH:mm:ss[[.][SSSSSS][SSS]][ ]VV[ ]'['VV']'][HH:mm:ss[[.][SSSSSS][SSS]][ ]X][HH:mm:ss[[.][SSSSSS][SSS]]]\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The DateTimeFormatter pattern to use when converting String dates. Defaults to supporting ISO style date times. Note: A string representation is expected to contain both date and time information. If the string only contains date information then the time since epoch will be taken from the start of that day. If a string representation does not contain time-zone offset, then the extracted date and time is interpreted as UTC.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The DateTimeFormatter pattern for the date.\",\n                \"dependents\": [],\n                \"order\": 6\n            },\n            \"value\": {\n                \"name\": \"timeseries.timefield.auto.convert.date.format\",\n                \"value\": \"yyyy-MM-dd[['T'][ ]][HH:mm:ss[[.][SSSSSS][SSS]][ ]VV[ ]'['VV']'][HH:mm:ss[[.][SSSSSS][SSS]][ ]X][HH:mm:ss[[.][SSSSSS][SSS]]]\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        },\n        {\n            \"definition\": {\n                \"name\": \"timeseries.timefield.auto.convert.locale.language.tag\",\n                \"type\": \"STRING\",\n                \"required\": false,\n                \"default_value\": \"\",\n                \"importance\": \"LOW\",\n                \"documentation\": \"The DateTimeFormatter locale language tag to use with the date pattern: Defaults to Locale.ROOT.\",\n                \"group\": \"Time series\",\n                \"width\": \"MEDIUM\",\n                \"display_name\": \"The DateTimeFormatter locale language tag to use: Defaults to using the neutral Locale.ROOT.\",\n                \"dependents\": [],\n                \"order\": 7\n            },\n            \"value\": {\n                \"name\": \"timeseries.timefield.auto.convert.locale.language.tag\",\n                \"value\": \"\",\n                \"recommended_values\": [],\n                \"errors\": [],\n                \"visible\": true\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostname",
+			"value": "192.168.0.100:8083",
+			"type": "string"
+		}
+	]
+}

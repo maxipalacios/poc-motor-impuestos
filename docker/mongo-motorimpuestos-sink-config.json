@@ -1,0 +1,16 @@
+{
+    "name": "mongo-motorimpuestos-sink",
+    "config": {
+        "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+        "key.converter.schemas.enable": "false",
+        "database": "TaxesDocuments",
+        "document.id.strategy": "com.mongodb.kafka.connect.sink.processor.id.strategy.FullKeyStrategy",
+        "topics": "certificates",
+        "connection.uri": "mongodb://root:example@192.168.0.100:27017",
+        "value.converter.schemas.enable": "false",
+        "name": "mongo-motorimpuestos-sink",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "collection": "certificates",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter"
+    }
+}

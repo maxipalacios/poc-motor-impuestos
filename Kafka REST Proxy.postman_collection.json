@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "20a1aed1-4452-409b-9d82-aeb8bf7fbffd",
+		"name": "Kafka REST Proxy",
+		"description": "[https://docs.confluent.io/platform/current/kafka-rest/api.html#crest-api-v3](https://docs.confluent.io/platform/current/kafka-rest/api.html#crest-api-v3)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24472513"
+	},
+	"item": [
+		{
+			"name": "clusters",
+			"item": [
+				{
+					"name": "List clusters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();\r",
+									"pm.collectionVariables.set(\"cluster_id\", jsonResponse.data[0].cluster_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cluster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List cluster configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/broker-configs",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"broker-configs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batch alter cluster configs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"name\": \"max.connections\",\r\n            \"operation\": \"DELETE\"\r\n        },\r\n        {\r\n            \"name\": \"compression.type\",\r\n            \"value\": \"gzip\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/broker-configs:alter",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"broker-configs:alter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cluster config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/broker-configs/:name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"broker-configs",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "compression.type"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update cluster config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"gzip\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/broker-configs/:name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"broker-configs",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "compression.type"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all broker configs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"gzip\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/brokers/-/configs",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"brokers",
+								"-",
+								"configs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "consumer group",
+			"item": [
+				{
+					"name": "List consumer groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/consumer-groups",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"consumer-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get consumer group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/consumer-groups/:consumer_group_id",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"consumer-groups",
+								":consumer_group_id"
+							],
+							"variable": [
+								{
+									"key": "consumer_group_id",
+									"value": "dev-consumer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List consumers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/consumer-groups/:consumer_group_id/consumers",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"consumer-groups",
+								":consumer_group_id",
+								"consumers"
+							],
+							"variable": [
+								{
+									"key": "consumer_group_id",
+									"value": "dev-consumer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List consumer assignments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/consumer-groups/:consumer_group_id/consumers/:consumer_id/assignments",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"consumer-groups",
+								":consumer_group_id",
+								"consumers",
+								":consumer_id",
+								"assignments"
+							],
+							"variable": [
+								{
+									"key": "consumer_group_id",
+									"value": "dev-consumer"
+								},
+								{
+									"key": "consumer_id",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset cluster config",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"gzip\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/broker-configs/:name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"broker-configs",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "compression.type"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "partition",
+			"item": [
+				{
+					"name": "List partitions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name/partitions",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics",
+								":topic_name",
+								"partitions"
+							],
+							"variable": [
+								{
+									"key": "topic_name",
+									"value": "certificates"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topic",
+			"item": [
+				{
+					"name": "List topics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get topic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics",
+								":topic_name"
+							],
+							"variable": [
+								{
+									"key": "topic_name",
+									"value": "certificates"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic_name\": \"topic-X\",\r\n    \"partitions_count\": 64,\r\n    \"replication_factor\": 3,\r\n    \"configs\": [\r\n        {\r\n            \"name\": \"cleanup.policy\",\r\n            \"value\": \"compact\"\r\n        },\r\n        {\r\n            \"name\": \"compression.type\",\r\n            \"value\": \"gzip\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete topic",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic_name\": \"topic-X\",\r\n    \"partitions_count\": 64,\r\n    \"replication_factor\": 3,\r\n    \"configs\": [\r\n        {\r\n            \"name\": \"cleanup.policy\",\r\n            \"value\": \"compact\"\r\n        },\r\n        {\r\n            \"name\": \"compression.type\",\r\n            \"value\": \"gzip\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics",
+								":topic_name"
+							],
+							"variable": [
+								{
+									"key": "topic_name",
+									"value": "certificates"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "broker",
+			"item": [
+				{
+					"name": "List brokers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/brokers",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"brokers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get broker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/brokers/:broker_id",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"brokers",
+								":broker_id"
+							],
+							"variable": [
+								{
+									"key": "broker_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete broker",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/brokers/:broker_id",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"brokers",
+								":broker_id"
+							],
+							"variable": [
+								{
+									"key": "broker_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "records",
+			"item": [
+				{
+					"name": "Produce records to the given topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name/records",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v3",
+								"clusters",
+								"{{cluster_id}}",
+								"topics",
+								":topic_name",
+								"records"
+							],
+							"variable": [
+								{
+									"key": "topic_name",
+									"value": "certificates"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostname",
+			"value": "192.168.0.100:8082",
+			"type": "string"
+		},
+		{
+			"key": "cluster_id",
+			"value": ""
+		}
+	]
+}

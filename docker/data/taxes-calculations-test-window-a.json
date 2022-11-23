@@ -1,0 +1,4 @@
+30692138747|{"created_at":"2022-10-22T09:01:00.000Z","transaction_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","cuit":"30692138747","tax_id":"RET_IVA","base_tax":100,"tax_status":"CL","tax_rate":3.5,"tax_amount":3.5,"exclusion_rate":0}
+30692138747|{"created_at":"2022-10-22T09:01:00.001Z","transaction_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","cuit":"30692138747","tax_id":"PER_IIBB_CABA","base_tax":100,"tax_status":"CL","tax_rate":5,"tax_amount":5.0,"exclusion_rate":0}
+30692138747|{"created_at":"2022-10-22T09:01:00.002Z","transaction_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","cuit":"30692138747","tax_id":"RET_GANANCIAS","base_tax":100,"tax_status":"CL","tax_rate":3,"tax_amount":3.0,"exclusion_rate":0}
+30692138747|{"created_at":"2022-10-22T09:01:00.003Z","transaction_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","cuit":"30692138747","tax_id":"RET_IVA","base_tax":100,"tax_status":"CL","tax_rate":5,"tax_amount":5.0,"exclusion_rate":0}
