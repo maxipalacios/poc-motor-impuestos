@@ -42,10 +42,40 @@ curl --location --request POST 'http://192.168.0.100:8083/connectors' \
 }'
 ```
 
-## Produce messages
+## Produce records from kafka-console-producer
 ```
 docker exec -it broker bash
 kafka-console-producer --bootstrap-server broker:9092 --topic taxes-calculations --property 'parse.key=true' --property 'key.separator=|' < /data/taxes-calculations-test-window-a.json
+```
+
+## Produce records from datagen source connector
+
+Download the connector from and unzip into the connectors folder.  
+[confluentinc-kafka-connect-datagen-0.6.0.zip](https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-datagen/versions/0.6.0/confluentinc-kafka-connect-datagen-0.6.0.zip)
+
+Unzip in ./poc-motor-impuestos/docker/connectors
+
+## Create datagen source connector
+
+```
+curl --location --request POST 'http://192.168.0.100:8083/connectors' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "datagen-taxes-calculations-source",
+    "config": {
+        "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
+        "iterations": "-1",
+        "kafka.topic": "taxes-calculations",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "max.interval": "500",
+        "name": "datagen-taxes-calculations-source",
+        "schema.keyfield": "cuit",
+        "schema.string": "{\"namespace\":\"datagen.taxes_engine\",\"name\":\"taxes_calculated\",\"type\":\"record\",\"fields\":[{\"name\":\"created_at\",\"type\":\"string\"},{\"name\":\"transaction_id\",\"type\":\"string\"},{\"name\":\"cuit\",\"type\":\"string\"},{\"name\":\"tax_id\",\"type\":\"string\"},{\"name\":\"base_tax\",\"type\":\"double\"},{\"name\":\"tax_status\",\"type\":\"string\"},{\"name\":\"tax_rate\",\"type\":\"double\"},{\"name\":\"tax_amount\",\"type\":\"double\"},{\"name\":\"exclusion_rate\",\"type\":\"double\"}],\"arg.properties\":{\"options\":[{\"created_at\":\"2022-10-22T09:01:00.000Z\",\"transaction_id\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"cuit\":\"30692138747\",\"tax_id\":\"RET_IVA\",\"base_tax\":100.0,\"tax_status\":\"CL\",\"tax_rate\":3.5,\"tax_amount\":3.5,\"exclusion_rate\":0.0},{\"created_at\":\"2022-10-22T09:01:00.001Z\",\"transaction_id\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"cuit\":\"30692138747\",\"tax_id\":\"PER_IIBB_CABA\",\"base_tax\":100.0,\"tax_status\":\"CL\",\"tax_rate\":5.0,\"tax_amount\":5.0,\"exclusion_rate\":0.0},{\"created_at\":\"2022-10-22T09:01:00.002Z\",\"transaction_id\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"cuit\":\"30692138747\",\"tax_id\":\"RET_GANANCIAS\",\"base_tax\":100.0,\"tax_status\":\"CL\",\"tax_rate\":3.0,\"tax_amount\":3.0,\"exclusion_rate\":0.0},{\"created_at\":\"2022-10-22T09:01:00.003Z\",\"transaction_id\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"cuit\":\"30692138747\",\"tax_id\":\"RET_IVA\",\"base_tax\":100.0,\"tax_status\":\"CL\",\"tax_rate\":5.0,\"tax_amount\":5.0,\"exclusion_rate\":0.0}]}}",
+        "tasks.max": "1",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false"
+    }
+}'
 ```
 
 ## References
