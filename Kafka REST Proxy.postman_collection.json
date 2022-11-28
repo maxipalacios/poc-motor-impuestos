@@ -394,7 +394,7 @@
 							"variable": [
 								{
 									"key": "topic_name",
-									"value": "certificates"
+									"value": "taxes-calculations"
 								}
 							]
 						}
@@ -433,7 +433,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name",
+							"raw": "http://{{hostname}}/v3/clusters/{{cluster_id}}/topics/:topic_name/configs",
 							"protocol": "http",
 							"host": [
 								"{{hostname}}"
@@ -443,12 +443,13 @@
 								"clusters",
 								"{{cluster_id}}",
 								"topics",
-								":topic_name"
+								":topic_name",
+								"configs"
 							],
 							"variable": [
 								{
 									"key": "topic_name",
-									"value": "certificates"
+									"value": "taxes-calculations"
 								}
 							]
 						}
